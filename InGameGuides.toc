@@ -1,0 +1,21 @@
+## Interface: 11505
+## Author: TheBoringDad
+## Version: 0.1
+## Title: InGameGuides
+## Notes: Interface addon to display guides.
+## SavedVariables: IGG_GLOBAL
+
+## X-Curse-Project-ID: 1154536
+
+API.lua
+Callbacks.lua
+
+Locales\enUS.lua
+
+TradeskillsAPI.lua
+
+Templates.lua
+Templates.xml
+
+InGameGuides.lua
+InGameGuides.xml

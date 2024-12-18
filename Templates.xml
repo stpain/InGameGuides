@@ -1,0 +1,188 @@
+<Ui>
+
+    <Frame name="IGGListviewTemplate" mixin="IGGNoTemplateListviewMixin" virtual="true">
+        <Frames>
+            <Frame parentKey="scrollBox" inherits="WowScrollBoxList"/>
+            <EventFrame parentKey="scrollBar" inherits="MinimalScrollBar">
+                <Anchors>
+                    <Anchor point="TOPRIGHT" x="-8" y="-4"/>
+                    <Anchor point="BOTTOMRIGHT" x="-8" y="4"/>
+                </Anchors>
+            </EventFrame>
+        </Frames>
+        <Scripts>
+            <OnLoad method="OnLoad"/>
+        </Scripts>
+    </Frame>
+
+    <Button name="IGGSelectGuideButtonTemplete" mixin="IGGSelectGuideButtonMixin" registerForClicks="anyDown" virtual="true">
+        <Layers>
+            <Layer level="OVERLAY">
+                <Texture parentKey="icon">
+                    <Size x="32" y="32"/>
+                    <Anchors>
+                        <Anchor point="LEFT" x="8" y="0"/>
+                    </Anchors>
+                </Texture>
+                <FontString parentKey="title" inherits="GameFontWhite" justifyH="LEFT">
+                    <Size y="18"/>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="46" y="-6"/>
+                        <Anchor point="TOPRIGHT" x="-16" y="-6"/>
+                    </Anchors>
+                </FontString>
+                <FontString parentKey="author" inherits="GameFontWhite" justifyH="LEFT">
+                    <Size y="18"/>
+                    <Anchors>
+                        <Anchor point="BOTTOMLEFT" x="46" y="6"/>
+                        <Anchor point="BOTTOMRIGHT" x="-16" y="6"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnLoad method="OnLoad"/>
+            <OnEnter method="OnEnter"/>
+            <OnLeave method="OnLeave"/>
+        </Scripts>
+    </Button>
+
+
+<!-- UI-LFG-ReadyMark -->
+    <Frame name="IGGStepTemplate" mixin="IGGStepTemplateMixin" virtual="true">
+        <Layers>
+            <Layer level="HIGHLIGHT">
+                <Texture parentKey="highlight" atlas="search-highlight" setAllPoints="true">
+
+                </Texture>
+            </Layer>
+            <Layer level="BACKGROUND">
+                <Texture parentKey="selected" atlas="search-select" hidden="true" setAllPoints="true">
+
+                </Texture>
+            </Layer>
+            <Layer level="BACKGROUND" textureSubLevel="-1">
+				<Texture parentKey="background" atlas="auctionhouse-itemheaderframe" alpha="1.0" hidden="true">	
+                    <Color r="1" g="0.85" b="0.1"/>			
+					<Anchors>
+						<Anchor point="TOPLEFT" x="1" y="0"/>
+						<Anchor point="BOTTOMRIGHT" x="0" y="1"/>
+					</Anchors>
+				</Texture>
+            </Layer>
+            <Layer level="ARTWORK">
+                <Texture parentKey="titleDivider" atlas="Options_HorizontalDivider" hidden="false">
+                    <Size y="2"/>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="6" y="-25"/>
+                        <Anchor point="TOPRIGHT" x="-6" y="-25"/>
+                    </Anchors>
+                </Texture>
+                <Texture parentKey="icon" atlas="UI-LFG-ReadyMark" hidden="false">
+                    <Size x="24" y="24"/>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="6" y="-33"/>
+                    </Anchors>
+                </Texture>
+                <Texture parentKey="completed" atlas="UI-LFG-ReadyMark" hidden="true">
+                    <Size x="20" y="20"/>
+                    <Anchors>
+                        <Anchor point="TOPRIGHT" x="-1" y="-1"/>
+                    </Anchors>
+                </Texture>
+            </Layer>
+            <Layer level="OVERLAY">
+                <FontString parentKey="title" inherits="GameFontWhite" justifyH="LEFT">
+                    <Size y="22"/>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="6" y="-3"/>
+                        <Anchor point="TOPRIGHT" x="-28" y="-3"/>
+                    </Anchors>
+                </FontString>
+                <FontString parentKey="action" inherits="GameFontWhite" justifyH="LEFT" justifyV="TOP">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeKey="$parent.icon" relativePoint="TOPRIGHT" x="4" y="0"/>
+                        <Anchor point="RIGHT" x="-4" y="0"/>
+                    </Anchors>
+                </FontString>
+                <FontString parentKey="note" inherits="GameFontNormalSmall" justifyH="LEFT">
+                    <Anchors>
+                        <Anchor point="BOTTOMLEFT" x="4" y="4"/>
+                        <Anchor point="BOTTOMRIGHT" x="-4" y="4"/>
+                        <Anchor point="TOP" relativeKey="$parent.action" relativePoint="BOTTOM" x="0" y="-2"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnLoad method="OnLoad"/>
+            <OnHyperlinkEnter>
+                if link then
+                    GameTooltip:SetOwner(self, 'ANCHOR_TOPRIGHT')
+                    GameTooltip:SetHyperlink(link)
+                    GameTooltip:Show()
+                end
+            </OnHyperlinkEnter>
+            <OnHyperlinkLeave>
+                GameTooltip_SetDefaultAnchor(GameTooltip, UIParent)
+            </OnHyperlinkLeave>
+        </Scripts>
+    </Frame>
+
+    <Frame name="IGGMaterialTemplate" mixin="IGGMaterialMixin" hyperlinksEnabled="true" virtual="true">
+            <Layers>
+            <Layer level="OVERLAY">
+                <Texture parentKey="icon">
+                    <Size x="24" y="24"/>
+                    <Anchors>
+                        <Anchor point="LEFT" x="4" y="0"/>
+                    </Anchors>
+                </Texture>
+                <FontString parentKey="link" inherits="GameFontWhite" justifyH="LEFT">
+                    <Anchors>
+                        <Anchor point="LEFT" x="32" y="0"/>
+                        <Anchor point="RIGHT" x="-6" y="0"/>
+                    </Anchors>
+                </FontString>
+                <FontString parentKey="stock" inherits="GameFontWhite" justifyH="LEFT">
+                    <Anchors>
+                        <Anchor point="RIGHT" x="-6" y="0"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnLoad method="OnLoad"/>
+            <OnEnter method="OnEnter"/>
+            <OnLeave method="OnLeave"/>
+            <OnHyperlinkEnter>
+                if link then
+                    GameTooltip:SetOwner(self, 'ANCHOR_TOPRIGHT')
+                    GameTooltip:SetHyperlink(link)
+                    GameTooltip:Show()
+                end
+            </OnHyperlinkEnter>
+            <OnHyperlinkLeave>
+                GameTooltip_SetDefaultAnchor(GameTooltip, UIParent)
+            </OnHyperlinkLeave>
+        </Scripts>
+    </Frame>
+
+    <CheckButton name="IGGCheckButton" inherits="ChatConfigCheckButtonTemplate" virtual="true">
+        <CheckedTexture atlas="orderhalltalents-done-checkmark"/>
+        <Size x="24" y="24"/>
+        <HitRectInsets left="0" right="-10"/>
+        <Layers>
+            <Layer level="OVERLAY">
+                <FontString parentKey="label" inherits="GameFontNormal" justifyH="LEFT">
+                    <!-- <Color r="1" g="1" b="1" a="1"/> -->
+                    <Size x="280" y="26"/>
+                    <Anchors>
+                        <Anchor point="LEFT" x="24" y="0"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+    </CheckButton>
+
+</Ui>

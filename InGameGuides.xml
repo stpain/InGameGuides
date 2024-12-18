@@ -1,0 +1,92 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ https://raw.githubusercontent.com/Meorawr/wow-ui-schema/main/UI.xsd">
+    
+    <Frame name="InGameGuides" mixin="InGameGuidesMixin" parent="UIParent" inherits="ButtonFrameTemplate" resizable="true" movable="true">
+
+        <Size x="300" y="300"/>
+        <Anchors>
+            <Anchor point="CENTER" x="0" y="0"/>
+        </Anchors>
+
+        <Layers>
+            <Layer level="OVERLAY">
+
+                <FontString parentKey="guideTitle" inherits="GameFontNormal">
+                    <Anchors>
+                        <Anchor point="TOP" x="0" y="-30"/>
+                    </Anchors>
+                </FontString>
+
+                <Texture parentKey="rightDivider" atlas="UI-Frame-BtnDivMiddle" useAtlasSize="true">
+                    <Anchors>
+                        <Anchor point="BOTTOMLEFT" x="120" y="2"/>
+                    </Anchors>
+                </Texture>
+            </Layer>
+        </Layers>
+
+        <Frames>
+            <Button parentKey="resize" inherits="PanelResizeButtonTemplate">
+                <Size x="16" y="16"/>
+                <Anchors>
+                    <Anchor point="BOTTOMRIGHT" x="0" y="0"/>
+                </Anchors>
+            </Button>
+
+            <Button parentKey="viewAllGuides" inherits="UIPanelButtonTemplate" registerForClicks="anyDown">
+                <Size x="120" y="22"/>
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT" x="4" y="4"/>
+                </Anchors>
+            </Button>
+
+            <Button parentKey="showMaterials" inherits="UIPanelButtonTemplate" text="Show Materials" hidden="true">
+                <Size x="120" y="22"/>
+                <Anchors>
+                    <Anchor point="LEFT" relativeKey="$parent.viewAllGuides" relativePoint="RIGHT" x="4" y="0"/>
+                </Anchors>
+                <Layers>
+                    <Layer level="OVERLAY">
+                        <Texture parentKey="rightDivider" atlas="UI-Frame-BtnDivMiddle" useAtlasSize="true">
+                            <Anchors>
+                                <Anchor point="LEFT" relativePoint="RIGHT" x="-4" y="0"/>
+                            </Anchors>
+                        </Texture>
+                    </Layer>
+                </Layers>
+            </Button>
+
+            <Button parentKey="loadAuctionData" inherits="UIPanelButtonTemplate" text="Load Auction data" hidden="true">
+                <Size x="160" y="22"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="6" y="-58"/>
+                </Anchors>
+            </Button>
+
+            <Frame parentKey="guideListview" inherits="IGGListviewTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="6" y="-82"/>
+                    <Anchor point="BOTTOMRIGHT" x="-10" y="28"/>
+                </Anchors>
+            </Frame>
+
+            <CheckButton parentKey="hideCompletedSteps" inherits="IGGCheckButton" hidden="true">
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="6" y="-58"/>
+                </Anchors>
+            </CheckButton>
+
+
+        </Frames>
+
+        <Scripts>
+            <OnLoad method="OnLoad"/>
+            <OnEvent method="OnEvent"/>
+            <OnDragStart>
+                self:StartMoving()
+            </OnDragStart>
+            <OnDragStop>
+                self:StopMovingOrSizing()
+            </OnDragStop>
+        </Scripts>
+    </Frame>
+</Ui>
