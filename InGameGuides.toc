@@ -1,6 +1,6 @@
 ## Interface: 11505
 ## Author: TheBoringDad
-## Version: 0.1
+## Version: 0.11
 ## Title: InGameGuides
 ## Notes: Interface addon to display guides.
 ## SavedVariables: IGG_GLOBAL
